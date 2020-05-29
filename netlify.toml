@@ -1,6 +1,10 @@
 [build]
   publish = "_site/"
   command = "jekyll build --trace --limit-posts 10"
+  ignore = "git status"
 
 [build.environment]
   RUBY_VERSION = "2.6"
+
+[build.processing]
+  skip_processing = true
