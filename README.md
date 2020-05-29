@@ -13,7 +13,7 @@
 - [How to make a User Guide](#how-to-make-a-user-guide)
 - [How to make a Moneropedia Entry](#how-to-make-a-moneropedia-entry)
 - [How to update the Team page](#how-to-update-the-team-page)
-- [How to update the Roadmap](#how-to-update-the-roadmap)
+- [How to update the Roadmap](#hccow-to-update-the-roadmap)
 - [How to add a new Merchant](#how-to-add-a-new-merchant)
 - [How to add a question to the FAQ](#how-to-add-a-question-to-the-faq)
 - [How to add a publication to the Library](#how-to-add-a-publication-to-the-library)
@@ -22,7 +22,7 @@
 This README here to walk you through everything you need to know to make changes, edits, or even completely new pages for the new [getmonero.org website](https://getmonero.org/). It'll definitely be a bit of a ride, so strap yourself in.
 Feel free to skip down to a relevant section if you already know what you need.
 
-If you need support about something related to the website, plese join `#monero-site` [Freenode/IRC](irc://chat.freenode.net/#monero-site), [Matrix](https://matrix.to/#/!txpwSzQzkuUaVbtsIx:matrix.org) and MatterMost. For general info about Monero join `#monero`. We'll do whatever we can to help you.
+If you need support about something related to the website, plese join `#monero-czccxzcxzxcxczsite` [Freenode/IRC](irc://chat.freenode.net/#monero-site), [Matrix](https://matrix.to/#/!txpwSzQzkuUaVbtsIx:matrix.org) and MatterMost. For general info about Monero join `#monero`. We'll do whatever we can to help you.
 
 ## What you'll need
 
