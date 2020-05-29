@@ -1,7 +1,10 @@
 [build]
   publish = "_site/"
   command = "jekyll build --trace --limit-posts 10"
-  ignore = "git hddh"
+  ignore = "git diff-tree --no-commit-id --name-only -r HEAD | grep README.md"
 
 [build.environment]
   RUBY_VERSION = "2.6"
+
+[build.processing]
+  skip_processing = true
