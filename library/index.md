@@ -17,7 +17,7 @@ permalink: /library/index.html
                 <h3><a href="Zero-to-Monero-1-0-0.pdf">{% t library.zerotomonerov1 %}</a></h3>
                     <p>{% t library.zerotomonerov1p %}</p>
                 <h3><a href="https://masteringmonero.com/free-download.html">Mastering Monero</a></h3>
-                    <p>{% t library.masteringmonerop %}</p> 
+                    <p>{% t library.masteringmonerop %}ddeeff</p> 
             </div>
         </div>
     </section>
