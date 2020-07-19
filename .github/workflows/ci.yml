@@ -5,24 +5,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-18.04
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby: [ '2.4', '2.5', '2.6', '2.7' ]
-    name: Ruby ${{ matrix.ruby }}
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-      - name: install bundler
-        run: gem install bundler:1.17.3
-      - name: bundle install
-        run: bundle install --jobs 4 --retry 3
-      - name: build site
-        run: bundle exec jekyll build
-  publish:
-    runs-on: ubuntu-18.04
     name: Deploy netlify
     steps:
     - uses: actions/checkout@master
@@ -34,11 +16,13 @@ jobs:
     - name: bundle install
       run: bundle install --jobs 4 --retry 3
     - name: build site
-      run: bundle exec jekyll build --limit-posts 1
-    
+      run: bundle exec jekyll build --limit-posts 1 --baseurl ''
 
-    - name: Publish
-      uses: netlify/actions/build@master
+    # deploy to netlify using CLI
+    - uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=site --functions=functions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
