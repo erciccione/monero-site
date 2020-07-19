@@ -9,8 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.6
+      with:
+        ruby-version: 2.6
     - name: install bundler
       run: gem install bundler:1.17.3
     - name: bundle install
@@ -20,8 +20,8 @@ jobs:
 
     # deploy to netlify using CLI
     - uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=site --functions=functions
+      with:
+        args: deploy --dir=site --functions=functions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
