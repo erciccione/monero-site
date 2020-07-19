@@ -21,7 +21,7 @@ jobs:
     # deploy to netlify using CLI
     - uses: netlify/actions/cli@master
       with:
-        args: deploy --dir=site --functions=functions
+        args: deploy --dir=site
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

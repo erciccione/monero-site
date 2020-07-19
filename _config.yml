@@ -24,7 +24,7 @@ plugins:
   - jekyll-multiple-languages-plugin
 
 # jekyll-multiple-languages-plugin settings:
-languages: ["en", "es", "it", "pl", "fr", "ar", "ru", "de", "nl", "pt-br", "tr", "zh-cn", "zh-tw"]
+languages: ["en"]
 
 
 exclude_from_localizations: ["img", "css", "fonts", "media", "404.html", "feed.xml", "meta", "_posts", "legal", "blog"]
