@@ -1,3 +1,6 @@
+[context.production]
+  command = "echo 'skipping'"
+
 [build]
   publish = "_site/"
   command = "jekyll build --trace --limit-posts 10 --baseurl ''"
