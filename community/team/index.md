@@ -27,17 +27,17 @@ permalink: /community/team/index.html
                                                     </div>
                                                     <div class="row center-xs icons">
                                                     {% if member.github %}
-                                                        <a href="{{member.github}}" target="_blank" rel="noreferrer, noopener">
+                                                        <a id="ext-noicon" href="{{member.github}}" target="_blank" rel="noreferrer, noopener">
                                                             <div class="col social-icon github"></div>
                                                         </a>
                                                     {%endif%}
                                                     {% if member.twitter %}
-                                                        <a href="{{member.twitter}}" target="_blank" rel="noreferrer, noopener">
+                                                        <a id="ext-noicon" href="{{member.twitter}}" target="_blank" rel="noreferrer, noopener">
                                                             <div class="col social-icon twitter"></div>
                                                         </a>
                                                     {%endif%}
                                                     {% if member.reddit %}
-                                                        <a href="{{member.reddit}}" target="_blank" rel="noreferrer, noopener">
+                                                        <a id="ext-noicon" href="{{member.reddit}}" target="_blank" rel="noreferrer, noopener">
                                                             <div class="col social-icon reddit"></div>
                                                         </a>
                                                     {%endif%}

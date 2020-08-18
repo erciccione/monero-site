@@ -253,11 +253,11 @@ permalink: /downloads/index.html
                             </div>
                         </div>
                         <div class="row mob-wallets center-xs">
-                            <a href="https://www.ledger.com/monero-wallet/"><img src="/img/ledger.png"></a>
-                            <a href="https://wiki.trezor.io/Monero_(XMR)"><img src="/img/trezor.png"></a>
+                            <a id="ext-noicon" href="https://www.ledger.com/monero-wallet/"><img src="/img/ledger.png"></a>
+                            <a id="ext-noicon" href="https://wiki.trezor.io/Monero_(XMR)"><img src="/img/trezor.png"></a>
                         </div>
                         <div class="row mob-wallets center-xs">
-                            <a href="https://github.com/monero-project/kastelo"><img src="/img/kastelo.png"></a>
+                            <a id="ext-noicon" href="https://github.com/monero-project/kastelo"><img src="/img/kastelo.png"></a>
                         </div>                    
                 </div>
                 <!-- End 'Hardware Wallets' -->
@@ -272,10 +272,10 @@ permalink: /downloads/index.html
                             </div>
                         </div>
                         <div class="row between-xs mob-wallets">
-                                <a href="https://cakewallet.io"><img style="height: 115px;"  src="/img/cakewallet.png" alt="Cake Wallet Logo"></a>
-                                <a href="https://monerujo.io"><img style="height: 115px;" src="/img/Monerujo-wallet.png" alt="Monerujo Logo"></a>
-                                <a href="https://mymonero.com"><img src="/img/mymonero.png" alt="MyMonero Logo"></a>
-                                <a href="https://edge.app/"><img style="height: 115px;" src="/img/edge-wallet.png" alt="Edge Logo"></a>
+                                <a id="ext-noicon" href="https://cakewallet.io"><img style="height: 115px;"  src="/img/cakewallet.png" alt="Cake Wallet Logo"></a>
+                                <a id="ext-noicon" href="https://monerujo.io"><img style="height: 115px;" src="/img/Monerujo-wallet.png" alt="Monerujo Logo"></a>
+                                <a id="ext-noicon" href="https://mymonero.com"><img src="/img/mymonero.png" alt="MyMonero Logo"></a>
+                                <a id="ext-noicon" href="https://edge.app/"><img style="height: 115px;" src="/img/edge-wallet.png" alt="Edge Logo"></a>
                         </div>
                 </div>
                 <!-- End 'Mobile & Light Wallets' -->
