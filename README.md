@@ -69,7 +69,6 @@ We are trying to move most of the localization work on Weblate, but some parts o
 * Navigate to the correct language in the /i18n folder and find the page you wish to translate
 * Do not translate any of the `*.yml` files in the /_18n folder
 * Click the file and translate the page, not touching any HTML or markdown
-* Remove `{% include untranslated.html %}` from the page
 * Test/Build
 * Submit PR
 
@@ -86,8 +85,6 @@ Moneropedia entries have two specificities:
 Moneropedia Fron should be translated for both *entry:* and *summary:* elements. However, *terms:* should be extanded with their translation, leaving the English words **untouched**.
 This is really important for compatibility purposes. With this, if a new guide is added to the site, an English term on the untranslated version of the guide in another language could be linked to the moneropedia article (of the same language).
 
-* The old *untranslated* snippet must be removed, therefore the next section is irrelevant here.
-
 Finally, your entry should go from:
 ```
 ---
@@ -96,8 +93,9 @@ terms: ["English", "terms"]
 summary: "English summary."
 ---
 
-{% include untranslated.html %}
+{% include disclaimer.html translated="no" translationOutdated="no" %}
 ```
+
 To:
 ```
 ---
@@ -105,10 +103,12 @@ entry: "Translated entry name"
 terms: ["English", "terms", "translated", "terms"]
 summary: "Translated summary."
 ---
+
+{% include disclaimer.html translated="yes" translationOutdated="no" %}
 ```
 
 ### 4. set the 'translated' snippet to true
-Somewhere on the page (usually the top) should be a snippet that says `{% include disclaimer.html translated="false" version=page.version %}`. Simply change this to `{% include disclaimer.html translated="true" version=page.version %}`. This will remove the orange bar from the bottom saying the page is untranslated.
+Somewhere on the page (usually the top) should be a snippet that says `{% include disclaimer.html translated="no" translationOutdated="no" %}`. Simply change this to `{% include disclaimer.html translated="yes" translationOutdated="no" %}`. This will remove the orange bar from the bottom saying the page is untranslated.
 
 ## How to add a new language
 Adding a new language can be complicated. If you feel unsure about the steps necessary, contact the Website workgroup and somebody will add the new language for you.
