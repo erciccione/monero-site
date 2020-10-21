@@ -4,6 +4,7 @@ description: Monero is a digital currency that is secure, private, and untraceab
 keywords: "monero, xmr, bitmonero, cryptocurrency"
 baseurl: ""
 url: "https://www.getmonero.org"
+encoding: utf-8
 
 markdown: kramdown
 
