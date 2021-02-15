@@ -23,6 +23,7 @@ global:
   copyright: Opphavsrett
   getting_started: Kom i gang
   monero: Monero
+  lang_tag: "@lang_tag_nb-no"
 moneropedia:
   entries:
     randomx: RandomX
