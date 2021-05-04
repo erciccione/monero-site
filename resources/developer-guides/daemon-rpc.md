@@ -169,7 +169,7 @@ Outputs:
 * *blocktemplate_blob* - string; Blob on which to try to mine a new block.
 * *blockhashing_blob* - string; Blob on which to try to find a valid nonce.
 * *difficulty* - unsigned int; Difficulty of next block.
-* *difficulty_top64* - TODO
+* *difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit network difficulty.
 * *expected_reward* - unsigned int; Coinbase reward expected to be received if block is successfully mined.
 * *height* - unsigned int; Height on which to mine.
 * *next_seed_hash* - TODO
@@ -179,7 +179,7 @@ Outputs:
 * *seed_height* - TODO
 * *status* - string; General RPC error code. "OK" means everything looks good.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
-* *wide_difficulty* - TODO
+* *wide_difficulty* - string; Network difficulty (analogous to the strength of the network) as a hexadecimal string representing a 128-bit number.
 
 Example:
 
@@ -252,7 +252,7 @@ Outputs:
   * *block_size* - unsigned int; The block size in bytes.
   * *block_weight* - TODO
   * *cumulative_difficulty* - unsigned int; Cumulative difficulty of all blocks up to the block in the reply.
-  * *cumulative_difficulty_top64* - TODO
+  * *cumulative_difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit cumulative difficulty.
   * *depth* -  unsigned int; The number of blocks succeeding this block on the blockchain. A larger number means an older block.
   * *difficulty* - unsigned int; The strength of the Monero network based on mining power.
   * *hash* - string; The hash of this block.
@@ -268,11 +268,11 @@ Outputs:
   * *prev_hash* - string; The hash of the block immediately preceding this block in the chain.
   * *reward* - unsigned int; The amount of new @atomic-units generated in this block and rewarded to the miner. Note: 1 XMR = 1e12 @atomic-units.
   * *timestamp* - unsigned int; The unix time at which the block was recorded into the blockchain.
-  * *wide_cumulative_difficulty* - TODO
-  * *wide_difficulty* - TODO
-* *credits* - TODO
+  * *wide_cumulative_difficulty* - Cumulative difficulty of all blocks in the blockchain as a hexadecimal string representing a 128-bit number.
+  * *wide_difficulty* - string; Network difficulty (analogous to the strength of the network) as a hexadecimal string representing a 128-bit number.
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 In this example, the most recent block (1562023 at the time) is returned:
@@ -445,10 +445,10 @@ Inputs:
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *headers* - array of `block_header` (a structure containing block header information. See [get_last_block_header](#get_last_block_header)).
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 In this example, blocks range from height 1545999 to 1546000 is looked up (notice that the returned informations are ascending order and that it is at the April 2018 network upgrade time):
@@ -531,7 +531,7 @@ Outputs:
 
 * *blob* - string; Hexadecimal blob of block information.
 * *block_header* - A structure containing block header information. See [get_last_block_header](#get_last_block_header).
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *json* - json string; JSON formatted block details:
   * *major_version* - Same as in block header.
   * *minor_version* - Same as in block header.
@@ -552,7 +552,7 @@ Outputs:
     * *signatures* - Contain signatures of tx signers. Coinbased txs do not have signatures.
   * *tx_hashes* - List of hashes of non-coinbase transactions in the block. If there are no other transactions, this will be an empty list.
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 **Look up by height:**
@@ -854,13 +854,13 @@ Inputs: *None*.
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *earliest_height* - unsigned int; Block height at which hard fork would be enabled if voted in.
 * *enabled* - boolean; Tells if hard fork is enforced.
 * *state* - unsigned int; Current hard fork state: 0 (There is likely a hard fork), 1 (An update is needed to fork properly), or 2 (Everything looks good).
 * *status* - string; General RPC error code. "OK" means everything looks good.
 * *threshold* - unsigned int; Minimum percent of votes to trigger hard fork. Default is 80.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 * *version* - unsigned int; The major block version for the fork.
 * *votes* - unsigned int; Number of votes towards hard fork.
@@ -1030,14 +1030,14 @@ Inputs:
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *histogram* - list of histogram entries, in the following structure:
   * *amount* - unsigned int; Output amount in @atomic-units
   * *total_instances* - unsigned int;
   * *unlocked_instances* - unsigned int;
   * *recent_instances* - unsigned int;
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 Example:
@@ -1077,13 +1077,13 @@ Inputs:
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *emission_amount* - unsigned int; amount of coinbase reward in @atomic-units
 * *emission_amount_top64* - TODO
 * *fee_amount* - unsigned int; amount of fees in @atomic-units
 * *fee_amount_top64* - TODO
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 * *wide_emission_amount* - TODO
 * *wide_fee_amount* - TODO
@@ -1156,11 +1156,11 @@ Inputs:
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *fee* - unsigned int; Amount of fees estimated per byte in @atomic-units
 * *quantization_mask* - unsigned int; Final fee should be rounded up to an even multiple of this value
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 Example:
@@ -1197,11 +1197,11 @@ Outputs:
   * *block_hash* - string; the block hash of the first diverging block of this alternative chain.
   * *block_hashes* - TODO
   * *difficulty* - unsigned int; the cumulative difficulty of all blocks in the alternative chain.
-  * *difficulty_top64* - TODO
+  * *difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit network difficulty.
   * *height* - unsigned int; the block height of the first diverging block of this alternative chain.
   * *length* - unsigned int; the length in blocks of this alternative chain, after divergence.
   * *main_chain_parent_block* - TODO
-  * *wide_difficulty* - TODO
+  * *wide_difficulty* - string; Network difficulty (analogous to the strength of the network) as a hexadecimal string representing a 128-bit number.
 * *status* - string; General RPC error code. "OK" means everything looks good.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
@@ -1270,7 +1270,7 @@ Inputs: *None*.
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *height* - unsigned int;
 * *next_needed_pruning_seed* - TODO
 * *overview* - TODO
@@ -1641,7 +1641,7 @@ Outputs:
 
 * *missed_tx* - array of strings. (Optional - returned if not empty) Transaction hashes that could not be found.
 * *status* - General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *txs* - array of structure *entry* as follows:
   * *as_hex* - string; Full transaction information as a hex string.
   * *as_json* - json string; List of transaction info:
@@ -1750,9 +1750,9 @@ Inputs: *None*
 Outputs:
 
 * *blks_hashes* - array of strings; list of alternative blocks hashes to main chain
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 Example:
@@ -1782,10 +1782,10 @@ Inputs:
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *spent_status* - unsigned int list; List of statuses for each image checked. Statuses are follows: 0 = unspent, 1 = spent in blockchain, 2 = spent in transaction pool
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 Example:
@@ -1912,14 +1912,14 @@ Outputs:
 * *block_reward* - TODO
 * *block_target* - TODO
 * *difficulty* - unsigned int; Network difficulty (analogous to the strength of the network)
-* *difficulty_top64* - TODO
+* *difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit network difficulty.
 * *is_background_mining_enabled* - boolean; States if the mining is running in background (`true`) or foreground (`false`).
 * *pow_algorithm* - TODO
 * *speed* - unsigned int; Mining power in hashes per seconds.
 * *status* - string; General RPC error code. "OK" means everything looks good. Any other value means that something went wrong.
 * *threads_count* - unsigned int; Number of running mining threads.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
-* *wide_difficulty* - TODO
+* *wide_difficulty* - string; Network difficulty (analogous to the strength of the network) as a hexadecimal string representing a 128-bit number.
 
 Example while mining:
 
@@ -2226,7 +2226,7 @@ Inputs: *None*.
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *spent_key_images* - List of spent output key images:
   * *id_hash* - string; Key image.
   * *txs_hashes* - string list; tx hashes of the txes (usually one) spending that key image.
@@ -2349,7 +2349,7 @@ Inputs: *None*.
 
 Outputs:
 
-* *credits* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
 * *pool_stats* - Structure as follows:
   * *bytes_max* - unsigned int; Max transaction size in pool
   * *bytes_med* - unsigned int; Median transaction size in pool
@@ -2367,7 +2367,7 @@ Outputs:
   * *oldest* unsigned int; unix time of the oldest transaction in the pool
   * *txs_total* unsigned int; total number of transactions.
 * *status* - string; General RPC error code. "OK" means everything looks good.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
 
 Example:
